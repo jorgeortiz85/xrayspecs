@@ -48,6 +48,8 @@ object TimeConversions {
  * and other time-dependent behavior, without calling `sleep`.
  */
 object Time {
+  import TimeConversions._
+
   private var fn: () => Time = null
 
   reset()
@@ -60,6 +62,7 @@ object Time {
   }
 
   def now: Time = fn()
+  def never: Time = Time(0.seconds)
 
   def now_=(at: Time) {
     fn = () => at
