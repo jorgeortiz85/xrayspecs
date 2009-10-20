@@ -24,6 +24,5 @@ class XraySpecsRunner(path: String) extends SpecsFileRunner(path, ".*",
 
   def this() = this("src/test/scala/**/*.scala")
 
-  System.setProperty("stage", "test")
   Configgy.configure(System.getProperty("basedir") + "/config/" + System.getProperty("stage", "test") + ".conf")
 }
