@@ -35,7 +35,9 @@ object TimeConversions {
 
     def seconds = new Duration(toLong * 1000)
     def second = seconds
-    def millis = new Duration(toLong)
+    def milliseconds = new Duration(toLong)
+    def millisecond = milliseconds
+    def millis = milliseconds
   }
 
   implicit def anyValToRichAnyVal(v: AnyVal) = new RichAnyVal(v)
@@ -83,6 +85,7 @@ object Time {
 class Duration(at: Long) {
   def inSeconds = (at / 1000L).toInt
   def inMillis = at
+  def inMilliseconds = at
 
   def +(delta: Duration) = new Duration(at + delta.inMillis)
   def -(delta: Duration) = new Duration(at - delta.inMillis)
