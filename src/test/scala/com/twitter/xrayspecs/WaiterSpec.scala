@@ -18,7 +18,16 @@ object WaiterSpec extends Specification with Waiter {
 
     "give up eventually" in {
       var finished = false
-      waitUntil(2, 100) { finished == true } must throwA[Exception]
+      var stackTrace: List[StackTraceElement] = Nil
+      (try {
+        waitUntil(2, 100) { finished == true }
+      } catch {
+        case e: Exception =>
+          stackTrace = e.getStackTrace.toList
+          throw e
+      }) must throwA[Exception]
+
+//      stackTrace.filter { _.toString contains "Waiter.scala" }.size mustEqual 1
     }
 
     "notice an exception" in {

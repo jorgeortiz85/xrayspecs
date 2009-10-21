@@ -18,6 +18,7 @@ package com.twitter.xrayspecs
 
 import org.specs.Specification
 
+
 trait Waiter { self: Specification =>
   def waitUntil(outcome: => Boolean): Boolean = waitUntil(40, 100)(outcome)
 
