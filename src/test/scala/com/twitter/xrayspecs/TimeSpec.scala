@@ -41,5 +41,9 @@ object TimeSpec extends Specification {
       Time.now.inMillis mustEqual now.inMillis
       Time.now.inSeconds mustEqual now.inSeconds
     }
+
+    "parse a standard time" in {
+      Time.at("2009-11-15 19:04:23 +0000") mustEqual Time(1258311863.seconds)
+    }
   }
 }

@@ -16,6 +16,8 @@
 
 package com.twitter.xrayspecs
 
+import java.text.{ParsePosition, SimpleDateFormat}
+
 
 object TimeConversions {
   class RichAnyVal(wrapped: AnyVal) {
@@ -58,6 +60,8 @@ object TimeConversions {
 object Time {
   import TimeConversions._
 
+  private val formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss Z")
+
   private var fn: () => Time = null
 
   reset()
@@ -84,6 +88,14 @@ object Time {
 
   def advance(delta: Duration) {
     now = now + delta
+  }
+
+  def at(datetime: String) = {
+    val date = formatter.parse(datetime, new ParsePosition(0))
+    if (date == null) {
+      throw new Exception("Unable to parse date-time: " + datetime)
+    }
+    new Time(date.getTime())
   }
 }
 
