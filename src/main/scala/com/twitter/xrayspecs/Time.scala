@@ -38,6 +38,12 @@ object TimeConversions {
     def milliseconds = new Duration(toLong)
     def millisecond = milliseconds
     def millis = milliseconds
+    def minutes = new Duration(toLong * 1000 * 60)
+    def minute = minutes
+    def hours = new Duration(toLong * 1000 * 60 * 60)
+    def hour = hours
+    def days = new Duration(toLong * 1000 * 60 * 60 * 24)
+    def day = days
   }
 
   implicit def anyValToRichAnyVal(v: AnyVal) = new RichAnyVal(v)
@@ -82,7 +88,10 @@ object Time {
 }
 
 
-class Duration(at: Long) {
+class Duration(val at: Long) {
+  def inDays = (inHours / 24)
+  def inHours = (inMinutes / 60)
+  def inMinutes = (inSeconds / 60)
   def inSeconds = (at / 1000L).toInt
   def inMillis = at
   def inMilliseconds = at
@@ -97,12 +106,17 @@ class Duration(at: Long) {
 
   override def equals(other: Any) = {
     other match {
-      case other: Time =>
+      case other: Duration =>
         inSeconds == other.inSeconds
       case _ =>
         false
     }
   }
+
+  def >(other: Duration) = at > other.at
+  def <(other: Duration) = at < other.at
+  def >=(other: Duration) = at >= other.at
+  def <=(other: Duration) = at <= other.at
 }
 
 
