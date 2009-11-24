@@ -16,13 +16,18 @@
 
 package com.twitter.xrayspecs
 
+import java.io.File
 import net.lag.configgy.Configgy
 import org.specs.runner.SpecsFileRunner
+
 
 class XraySpecsRunner(path: String) extends SpecsFileRunner(path, ".*",
   System.getProperty("system", ".*"), System.getProperty("example", ".*")) {
 
   def this() = this("src/test/scala/**/*.scala")
 
-  Configgy.configure(System.getProperty("basedir") + "/config/" + System.getProperty("stage", "test") + ".conf")
+  var configFilename = System.getProperty("basedir") + "/config/" + System.getProperty("stage", "test") + ".conf"
+  if (new File(configFilename).exists()) {
+    Configgy.configure(configFilename)
+  }
 }
