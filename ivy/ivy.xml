@@ -1,7 +1,7 @@
 <ivy-module version="1.0" xmlns:e="http://ant.apache.org/ivy/extra">
   <info organisation="com.twitter"
     module="xrayspecs"
-    revision="1.0.5"
+    revision="1.0.6"
     e:buildpackage="com.twitter.xrayspecs"
     e:testclass="com.twitter.xrayspecs.TestRunner"
   />
@@ -12,10 +12,9 @@
     <conf name="test" visibility="private" description="build and run tests" />
   </configurations>
   <dependencies>
-    <dependency org="org.scala-lang" name="scala-compiler" rev="2.7.5" />
-    <dependency org="org.scala-lang" name="scala-library" rev="2.7.5" />
+    <dependency org="org.scala-lang" name="scala-compiler" rev="2.7.6" />
+    <dependency org="org.scala-lang" name="scala-library" rev="2.7.6" />
     <dependency org="org.scala-tools.testing" name="specs" rev="1.6.1" conf="test->*" />
-    <dependency org="junit" name="junit" rev="4.5" conf="test->*" />
     <dependency org="org.scala-tools" name="vscaladoc" rev="1.1-md-3" conf="bootstrap->*" />
 
     <dependency org="net.lag" name="configgy" rev="1.4.3" />
