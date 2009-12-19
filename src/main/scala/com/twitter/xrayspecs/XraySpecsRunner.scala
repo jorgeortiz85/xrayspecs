@@ -18,6 +18,7 @@ package com.twitter.xrayspecs
 
 import java.io.File
 import net.lag.configgy.Configgy
+import net.lag.logging.Logger
 import org.specs.runner.SpecsFileRunner
 
 
@@ -29,5 +30,7 @@ class XraySpecsRunner(path: String) extends SpecsFileRunner(path, ".*",
   var configFilename = System.getProperty("basedir") + "/config/" + System.getProperty("stage", "test") + ".conf"
   if (new File(configFilename).exists()) {
     Configgy.configure(configFilename)
+  } else {
+    Logger.get("").setLevel(if (System.getProperty("debugtrace") == null) Logger.FATAL else Logger.TRACE)
   }
 }
