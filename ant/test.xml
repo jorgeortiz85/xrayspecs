@@ -25,6 +25,7 @@
         <jvmarg value="-Ddist.dir=${dist.dir}" />
         <jvmarg value="-Djava.library.path=${dist.dir}:${dist.dir}/libs" />
         <jvmarg value="-Xmx1200m" />
+		<arg value="-usejavacp"/>
         <arg value="@{classname}" />
       </java>
     </sequential>

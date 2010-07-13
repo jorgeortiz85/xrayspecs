@@ -12,7 +12,7 @@ class XraySpecsFramework extends SpecsFramework {
     new XraySpecsTestRunner(classLoader, loggers)
 }
 
-class XraySpecsTestRunner(loader: ClassLoader, val loggers: Array[Logger]) extends TestInterfaceRunner(loader, loggers) {
+class XraySpecsTestRunner(loader: ClassLoader, override val loggers: Array[Logger]) extends TestInterfaceRunner(loader, loggers) {
   override def run(specification: Option[Specification], handler: EventHandler) = {
     var configFilename = System.getProperty("basedir") + "/config/" + System.getProperty("stage", "test") + ".conf"
     if (new File(configFilename).exists()) {
