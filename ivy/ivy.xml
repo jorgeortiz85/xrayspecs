@@ -12,9 +12,9 @@
     <conf name="test" visibility="private" description="build and run tests" />
   </configurations>
   <dependencies>
-    <dependency org="org.scala-lang" name="scala-compiler" rev="2.8.0.RC7" />
-    <dependency org="org.scala-lang" name="scala-library" rev="2.8.0.RC7" />
-    <dependency org="org.scala-tools.testing" name="specs_2.8.0.RC7" rev="1.6.5-SNAPSHOT" />
+    <dependency org="org.scala-lang" name="scala-compiler" rev="2.8.0" />
+    <dependency org="org.scala-lang" name="scala-library" rev="2.8.0" />
+    <dependency org="org.scala-tools.testing" name="specs_2.8.0" rev="1.6.5-SNAPSHOT" />
     <dependency org="org.scala-tools" name="vscaladoc" rev="1.2-m1" conf="bootstrap->*" />
 
     <dependency org="net.lag" name="configgy" rev="1.5.4-scala-2.8" />

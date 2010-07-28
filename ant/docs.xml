@@ -11,7 +11,7 @@
       <pathelement location="${target.dir}/classes" />
     </path>
     <echo message="Building scaladoc..." />
-    <java classname="scala.tools.nsc.ScalaDoc" fork="true" failonerror="true">
+    <java classname="scala.tools.nsc.ScalaDoc" fork="true" failonerror="false">
       <classpath>
         <path refid="bootstrap.path" />
       </classpath>
